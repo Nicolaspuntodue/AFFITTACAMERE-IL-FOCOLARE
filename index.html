@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Il Focolare · Affittacamere a Collevalenza di Todi</title>
+  <meta name="description" content="Il Focolare: due appartamenti in pietra con camino a Collevalenza di Todi, a 150 metri dal Santuario dell'Amore Misericordioso. Prenotazione diretta da Carlo e Paola." />
+  <meta name="theme-color" content="#2a211c" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%232a211c'/%3E%3Cpath d='M32 50c-9 0-14-6-14-13 0-8 7-11 8-20 5 4 6 9 5 13 3-2 4-5 4-8 6 5 11 10 11 16 0 7-5 12-14 12z' fill='%23d9893f'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- fonts load without blocking first paint (display=swap + print-media trick) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:wght@400;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Source+Serif+4:wght@400;600&display=swap" /></noscript>
+  <!-- portrait screens get a half-width crop of the valley (chimney side): sharper and ~40% lighter.
+       crossorigin on preloads AND the <img>: same request mode as the WebGL texture loader, so each file is fetched once -->
+  <link rel="preload" as="image" href="/media/hero-port.webp" media="(max-aspect-ratio: 9/10)" fetchpriority="high" crossorigin="anonymous" />
+  <link rel="preload" as="image" href="/media/hero.webp" media="(min-aspect-ratio: 9/10)" fetchpriority="high" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <a class="skip" href="#case">Vai ai contenuti</a>
+
+  <header class="nav">
+    <a href="#top" class="nav__brand" aria-label="Il Focolare, torna su">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4 0-6.5-2.6-6.5-5.8 0-3.6 3.2-5 3.6-9 2.3 1.8 2.8 4 2.3 5.8 1.4-.9 1.8-2.2 1.8-3.6 2.7 2.2 5.3 4.4 5.3 7.1 0 3-2.4 5.5-6.5 5.5z"/></svg>
+      <span>Il Focolare</span>
+    </a>
+    <nav class="nav__links" aria-label="Sezioni">
+      <a href="#case">Le case</a>
+      <a href="#dettagli">I dettagli</a>
+      <a href="#dintorni">Dintorni</a>
+      <a href="#ospiti">Ospiti</a>
+    </nav>
+    <a href="#prenota" class="btn btn--small">Prenota</a>
+  </header>
+
+  <main id="top">
+    <!-- HERO: living photo of the valley; scroll turns afternoon into evening, the lights of Todi and the house window come on -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__sticky">
+        <picture>
+          <source media="(max-aspect-ratio: 9/10)" srcset="/media/hero-port.webp" />
+          <img class="hero__fallback" src="/media/hero.webp" alt="Dai tetti di Collevalenza la valle del Tevere al tramonto, con Todi sulla collina e un comignolo che fuma in primo piano" width="2400" height="1357" fetchpriority="high" crossorigin="anonymous" />
+        </picture>
+        <canvas class="hero__gl" aria-hidden="true"></canvas>
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <div class="hero__copy" data-phase="day">
+          <h1 id="hero-title" class="hero__title">Il Focolare,<br />a Collevalenza</h1>
+          <div class="hero__aside">
+            <p>Affittacamere con due appartamenti in pietra e il camino, a 6 km da Todi e a 150 metri dal Santuario dell’Amore Misericordioso.</p>
+            <a href="#prenota" class="btn">Verifica le date</a>
+          </div>
+        </div>
+        <div class="hero__copy hero__copy--evening" data-phase="evening" aria-hidden="true">
+          <p class="hero__title">Buonasera.<br />Il camino è acceso.</p>
+          <div class="hero__aside">
+            <p>Dopo la giornata al Santuario o tra i vicoli di Todi, si torna a casa e si cena davanti al fuoco.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LA CASA: pinned heading, real photographs pass by -->
+    <section class="casa wrap" aria-labelledby="casa-title">
+      <div class="casa__statement">
+        <h2 id="casa-title" class="head">Una vecchia casa umbra di pietra</h2>
+        <p class="lead">Travi a vista, mattoni e ceramiche di Deruta, in un borgo tranquillo a cento passi dal Santuario di Madre Speranza.</p>
+        <p>Carlo e Paola abitano qui accanto: vi accolgono come ospiti di famiglia, vi spiegano la casa e vi consigliano dove mangiare e cosa vedere in Umbria.</p>
+      </div>
+      <figure class="casa__ph casa__ph--a"><img src="/photos/vicolo.webp" alt="La casa color ocra sulla stradina di Torrececcocinella" width="333" height="500" loading="lazy" decoding="async" /></figure>
+      <figure class="casa__ph casa__ph--b"><img src="/photos/facciata.webp" alt="La facciata della casa con il balcone fiorito" width="500" height="333" loading="lazy" decoding="async" /></figure>
+      <figure class="casa__ph casa__ph--c"><img src="/photos/balcone.webp" alt="Il balcone in ferro battuto con i gerani" width="500" height="333" loading="lazy" decoding="async" /><figcaption>Il balcone sulla stradina, d’estate</figcaption></figure>
+    </section>
+
+    <!-- LE CASE: two apartments, photographs at uneven sizes -->
+    <section class="case" id="case" aria-labelledby="case-title">
+      <div class="wrap">
+        <h2 id="case-title" class="head case__title">Le due case</h2>
+      </div>
+
+      <article class="apt wrap" aria-labelledby="apt-bilocale">
+        <figure class="apt__big"><img src="/photos/camino-1600.webp" srcset="/photos/camino-900.webp 900w, /photos/camino-1600.webp 1600w" sizes="(min-width: 900px) 56vw, 100vw" alt="Il soggiorno del Bilocale con il camino in mattoni e le travi di legno" width="1600" height="1062" loading="lazy" decoding="async" /></figure>
+        <div class="apt__text">
+          <h3 id="apt-bilocale" class="apt__name">Bilocale</h3>
+          <p class="apt__guests">Da 2 a 4 ospiti · da 70 € a notte</p>
+          <p>Al piano terra il soggiorno con il camino, l’angolo cottura e il divano letto. Una scala interna porta alla camera matrimoniale e al bagno, al piano di sopra.</p>
+          <ul class="apt__list">
+            <li>Letto matrimoniale e divano letto</li>
+            <li>Camino, aria condizionata e riscaldamento</li>
+            <li>Cucina con forno, lavatrice, ferro da stiro</li>
+          </ul>
+        </div>
+        <figure class="apt__small"><img src="/photos/camera-pietra.webp" alt="La camera matrimoniale con il muro in pietra e il letto in ferro battuto" width="500" height="333" loading="lazy" decoding="async" /></figure>
+        <figure class="apt__square"><img src="/photos/cucina-frutta.webp" alt="Frutta fresca sul tavolo della cucina" width="500" height="333" loading="lazy" decoding="async" /></figure>
+      </article>
+
+      <article class="apt apt--flip wrap" aria-labelledby="apt-superior">
+        <figure class="apt__big"><img src="/photos/soggiorno-camino-1600.webp" srcset="/photos/soggiorno-camino-900.webp 900w, /photos/soggiorno-camino-1600.webp 1600w" sizes="(min-width: 900px) 56vw, 100vw" alt="Il soggiorno del Superior con il camino, la cucina in legno e la tavola apparecchiata" width="1600" height="1062" loading="lazy" decoding="async" /></figure>
+        <div class="apt__text">
+          <h3 id="apt-superior" class="apt__name">Superior</h3>
+          <p class="apt__guests">Fino a 6 ospiti · da 95 € a notte</p>
+          <p>Pensato per le famiglie: la camera matrimoniale, una camera con due letti singoli e il divano letto in soggiorno, accanto al camino. Cucina completa con lavastoviglie.</p>
+          <ul class="apt__list">
+            <li>Matrimoniale, due singoli e divano letto</li>
+            <li>Camino, aria condizionata e riscaldamento</li>
+            <li>Lavastoviglie, forno, tostapane, bollitore</li>
+          </ul>
+        </div>
+        <figure class="apt__small"><img src="/photos/letti-singoli.webp" alt="La camera con due letti singoli e le lampade accese" width="500" height="333" loading="lazy" decoding="async" /></figure>
+        <figure class="apt__square"><img src="/photos/camera-rosa-1600.webp" srcset="/photos/camera-rosa-900.webp 900w, /photos/camera-rosa-1600.webp 1600w" sizes="(min-width: 900px) 48vw, 60vw" alt="La camera matrimoniale con la testiera imbottita e la luce calda" width="1600" height="1062" loading="lazy" decoding="async" /></figure>
+      </article>
+
+      <div class="wrap included">
+        <h3 class="included__title">In tutte e due le case</h3>
+        <p>Wi-Fi gratuito, parcheggio gratuito davanti a casa, biancheria e asciugamani, accappatoi e set di cortesia. Animali piccoli su richiesta. Arrivo dalle 14:30 alle 23:00, partenza entro le 10:00.</p>
+      </div>
+    </section>
+
+    <!-- I DETTAGLI: band of unequal panels -->
+    <section class="dettagli" id="dettagli" aria-labelledby="dettagli-title">
+      <div class="wrap"><h2 id="dettagli-title" class="head">Fatta con cura, tenuta con cura</h2></div>
+      <div class="band">
+        <figure class="band__panel"><img src="/photos/camino-mensole.webp" alt="Il camino d’angolo con le mensole e le ceramiche" width="500" height="333" loading="lazy" decoding="async" /><figcaption>Il camino d’angolo,<br />con le ceramiche di casa</figcaption></figure>
+        <figure class="band__panel"><img src="/photos/ingresso.webp" alt="L’ingresso con la scala interna e le mensole" width="333" height="500" loading="lazy" decoding="async" /></figure>
+        <figure class="band__panel"><img src="/photos/cucina-scala.webp" alt="La cucina con la scala in legno che sale alle camere" width="500" height="333" loading="lazy" decoding="async" /></figure>
+        <figure class="band__panel"><img src="/photos/bagno.webp" alt="Il bagno con la doccia" width="333" height="500" loading="lazy" decoding="async" /></figure>
+      </div>
+      <p class="wrap band__caption">Pulizia 9,6 e comfort 9,6 su Booking: gli ospiti lo scrivono quasi in ogni recensione.</p>
+    </section>
+
+    <!-- DINTORNI: statement + table pushed right -->
+    <section class="dintorni" id="dintorni" aria-labelledby="dintorni-title">
+      <div class="wrap">
+        <h2 id="dintorni-title" class="head dintorni__title">Tutta l’Umbria<br />qui intorno</h2>
+        <div class="dintorni__grid">
+          <figure class="dintorni__photo">
+            <img src="/photos/santuario.webp" alt="Il campanile del Santuario dell’Amore Misericordioso a Collevalenza" width="500" height="335" loading="lazy" decoding="async" />
+            <figcaption>Il campanile del Santuario di Madre Speranza</figcaption>
+          </figure>
+          <table class="places">
+            <caption class="sr-only">Distanze dal Focolare</caption>
+            <tbody>
+              <tr><th scope="row">Santuario dell’Amore Misericordioso</th><td>3 min a piedi</td></tr>
+              <tr><th scope="row">Fermata bus per Roma, Fiumicino e Assisi</th><td>1 min a piedi</td></tr>
+              <tr class="gap"><th scope="row">Todi, Piazza del Popolo</th><td>10 min in auto</td></tr>
+              <tr><th scope="row">Acquasparta</th><td>15 min in auto</td></tr>
+              <tr><th scope="row">Spoleto</th><td>35 min in auto</td></tr>
+              <tr><th scope="row">Orvieto</th><td>40 min in auto</td></tr>
+              <tr class="gap"><th scope="row">Perugia</th><td>45 min in auto</td></tr>
+              <tr><th scope="row">Cascata delle Marmore</th><td>45 min in auto</td></tr>
+              <tr><th scope="row">Assisi</th><td>50 min in auto</td></tr>
+              <tr><th scope="row">Roma</th><td>1 h 40 in auto</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="umbria">
+          <figure class="umbria__a"><img src="/photos/todi-vista.webp" alt="Todi vista dall’alto, con i tetti e la valle" width="1280" height="857" loading="lazy" decoding="async" /><figcaption>Todi, a dieci minuti</figcaption></figure>
+          <figure class="umbria__b"><img src="/photos/girasoli.webp" alt="Un campo di girasoli sotto le colline umbre" width="500" height="281" loading="lazy" decoding="async" /><figcaption>I girasoli di luglio</figcaption></figure>
+          <figure class="umbria__c"><img src="/photos/assisi.webp" alt="La Basilica di San Francesco ad Assisi" width="500" height="375" loading="lazy" decoding="async" /><figcaption>Assisi</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- OSPITI: photo and offset quotation -->
+    <section class="ospiti" id="ospiti" aria-labelledby="ospiti-title">
+      <div class="wrap ospiti__grid">
+        <figure class="ospiti__photo"><img src="/photos/todi-piazza.webp" alt="Piazza del Popolo a Todi" width="1280" height="857" loading="lazy" decoding="async" /></figure>
+        <div class="ospiti__quote">
+          <h2 id="ospiti-title" class="sr-only">Dicono di noi</h2>
+          <blockquote>
+            <p>“…come stare a casa! Si ha proprio la sensazione di accoglienza e serenità da subito.”</p>
+            <footer>Tiziana, in famiglia, su Google · agosto 2023</footer>
+          </blockquote>
+          <ul class="scores">
+            <li><strong>4,8</strong> Google · 71 recensioni</li>
+            <li><strong>9,3</strong> Booking · 44 recensioni</li>
+            <li><strong>9,8</strong> per l’accoglienza di Carlo e Paola</li>
+          </ul>
+        </div>
+        <figure class="ospiti__small"><img src="/photos/scala.webp" alt="Il soggiorno con il divano e la tavola apparecchiata" width="500" height="333" loading="lazy" decoding="async" /></figure>
+      </div>
+    </section>
+
+    <!-- PRENOTA: the live thing, direct booking with a real price -->
+    <section class="prenota" id="prenota" aria-labelledby="prenota-title">
+      <div class="wrap prenota__grid">
+        <div class="prenota__intro">
+          <h2 id="prenota-title" class="head">Prenotate da noi</h2>
+          <p class="lead">Senza commissioni di Booking o Airbnb. Scegliete le date e quante persone siete: vi mostriamo subito l’appartamento giusto e il prezzo finale. Nessun pagamento ora.</p>
+          <ul class="perks">
+            <li>Il prezzo migliore, senza intermediari</li>
+            <li>Parcheggio gratuito e Wi-Fi inclusi</li>
+            <li>Conferma di Carlo entro poche ore</li>
+          </ul>
+        </div>
+
+        <form class="book" novalidate>
+          <div class="book__step" data-step="form">
+            <fieldset class="apt-pick">
+              <legend>Appartamento</legend>
+              <label><input type="radio" name="apt" value="bilocale" checked /><span><strong>Bilocale</strong> fino a 4</span></label>
+              <label><input type="radio" name="apt" value="superior" /><span><strong>Superior</strong> fino a 6</span></label>
+            </fieldset>
+            <div class="field-row">
+              <label class="field"><span>Arrivo</span><input type="date" name="checkin" required /></label>
+              <label class="field"><span>Partenza</span><input type="date" name="checkout" required /></label>
+            </div>
+            <label class="field"><span>Ospiti</span>
+              <select name="guests">
+                <option value="1">1 ospite</option><option value="2" selected>2 ospiti</option><option value="3">3 ospiti</option>
+                <option value="4">4 ospiti</option><option value="5">5 ospiti</option><option value="6">6 ospiti</option>
+              </select>
+            </label>
+            <div class="field-row">
+              <label class="field"><span>Nome e cognome</span><input type="text" name="name" autocomplete="name" required /></label>
+              <label class="field"><span>Telefono o email</span><input type="text" name="contact" autocomplete="email" required /></label>
+            </div>
+            <div class="book__sum" aria-live="polite">
+              <p class="book__line"><span data-out="line">Scegliete le date</span><strong data-out="total">—</strong></p>
+              <p class="book__hint" data-out="hint"></p>
+              <p class="book__err" data-out="error" role="alert"></p>
+            </div>
+            <button class="btn btn--wide" type="submit">Richiedi la prenotazione</button>
+          </div>
+          <div class="book__step book__done" data-step="done" hidden>
+            <p class="head">Grazie!</p>
+            <p data-out="done"></p>
+            <button class="btn btn--ghost" type="button" data-action="reset">Nuova richiesta</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CTA: one plain sentence -->
+    <section class="chiama" aria-labelledby="chiama-title">
+      <div class="wrap">
+        <h2 id="chiama-title" class="chiama__text">Domande sulla casa, sul Santuario o su come arrivare? Carlo risponde volentieri al telefono.</h2>
+        <a class="btn" href="tel:+393208774543">Chiama il 320 877 4543</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__photo" aria-hidden="true">
+      <img src="/photos/camino-1600.webp" srcset="/photos/camino-900.webp 900w, /photos/camino-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" alt="" width="1600" height="1062" loading="lazy" decoding="async" />
+      <img src="/photos/soggiorno-camino-1600.webp" srcset="/photos/soggiorno-camino-900.webp 900w, /photos/soggiorno-camino-1600.webp 1600w" sizes="(min-width: 900px) 50vw, 100vw" alt="" width="1600" height="1062" loading="lazy" decoding="async" />
+      <img src="/photos/camino-tv.webp" alt="" width="500" height="333" loading="lazy" decoding="async" />
+    </div>
+    <div class="footer__side">
+      <p class="footer__word">Il Focolare</p>
+      <nav class="footer__menu" aria-label="Menu">
+        <a href="#case">Le case</a>
+        <a href="#dettagli">I dettagli</a>
+        <a href="#dintorni">Dintorni</a>
+        <a href="#ospiti">Ospiti</a>
+        <a href="#prenota">Prenota</a>
+      </nav>
+      <div class="footer__info">
+        <address>Voc. Torrececcocinella 72<br />Località Collevalenza<br />06059 Todi (PG)</address>
+        <p><a href="tel:+393208774543">320 877 4543</a><br /><a href="https://www.facebook.com/ilfocolarediTodi/" target="_blank" rel="noopener">Facebook</a> · <a href="https://maps.google.com/?q=Affittacamere+Il+Focolare+Collevalenza" target="_blank" rel="noopener">Google Maps</a></p>
+      </div>
+      <p class="footer__legal">CIN IT054052C202019366 · Immagine della valle realizzata per la demo</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
